@@ -17,7 +17,7 @@ env:
 jobs:
  terraform:
    name: Terraform Infrastructure Change Management
-   runs-on: ubuntu-latest
+   runs-on: self-hosted
    defaults:
      run:
        shell: bash
