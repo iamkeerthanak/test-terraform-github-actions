@@ -1,4 +1,4 @@
-name: "Terraform Iaac using GitHub Actions"
+name: "Terraform Apply"
  
 on:
  push:
@@ -17,12 +17,12 @@ env:
 jobs:
  terraform:
    name: Terraform Infrastructure Change Management
-   runs-on: self-hosted
+   runs-on: ubuntu-latest
    defaults:
      run:
        shell: bash
        # We keep Terraform files in the terraform directory.
-       working-directory: /home/ubuntu/
+       working-directory: .
  
    steps:
      - name: Checkout the repository to the runner
