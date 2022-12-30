@@ -28,5 +28,7 @@ jobs:
     - name: Terraform init
       run: |
         terraform init -backend-config="bucket=$BUCKET_TF_STATE"
-        #terraform plan
+        terraform validate
+        terraform plan -no-color
+        terraform apply -auto-approve
         #terraform apply -auto-approve
