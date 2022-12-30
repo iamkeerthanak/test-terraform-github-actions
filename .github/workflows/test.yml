@@ -2,6 +2,10 @@ name: Example installing Terraform
 
 on: [push]
 
+env:
+ # S3 bucket for the Terraform state
+ BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE}}
+
 jobs:
   build:
 
