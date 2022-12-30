@@ -1,21 +1,24 @@
-name: CI-CD pipeline
+name: Example installing Terraform
 
-on:
-  push:
-    branches: [ "main" ]
-    
+on: [push]
+
 jobs:
   build:
-    
-   runs-on: self-hosted
-   steps:
-   - uses: hashicorp/setup-terraform@v2
-     with:
-      terraform_version: 1.1.7
-   - name: Deploy on Production
-     run: |
-      terraform init
-      #cd deploy && terraform init
-      #cd deploy/ && terraform apply -auto-approve
-      #cd deploy/ && git commit -m 'store terraform state file'
-      #cd deploy/ && git push
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Terraform
+      uses: little-core-labs/install-terraform@v2.0.0
+      with:
+          version: 0.13.4
+    - name: Terraform apply
+      run: |
+        terraform init
+        terraform plan
+        terraform apply -auto-approve
