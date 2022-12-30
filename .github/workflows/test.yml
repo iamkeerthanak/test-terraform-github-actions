@@ -27,6 +27,6 @@ jobs:
           version: 0.13.4
     - name: Terraform init
       run: |
-        terraform init
+        terraform init -backend-config="bucket=$BUCKET_TF_STATE"
         #terraform plan
         #terraform apply -auto-approve
